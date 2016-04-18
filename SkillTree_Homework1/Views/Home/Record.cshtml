@@ -1,0 +1,48 @@
+﻿@model  IEnumerable<SkillTree_Homework1.Models.ViewModels.MoneyViewModel>
+@{
+    Layout = null;
+}
+
+<table class="table table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.date)
+        </th>
+        <th >
+            @Html.DisplayNameFor(model => model.category)
+        </th>
+        <th >
+            @Html.DisplayNameFor(model => model.money)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.remark)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.date)
+        </td>
+        <td>
+            @if (item.category == 0)
+            {
+                @Html.Label("支出", new { @style = "color:red" })
+            }
+            else if (item.category == 1)
+            {
+                @Html.Label("收入", new { @style="color:green"})
+            }
+
+        
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.money)元
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.remark)
+        </td>
+    </tr>
+}
+
+</table>
