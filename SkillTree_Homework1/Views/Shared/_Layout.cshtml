@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using SkillTree_Homework1.App_Code;
+
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -7,7 +9,6 @@
     <title>SkillTree Homework1</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -22,9 +23,9 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("首頁", "Index", "Home")</li>
-                    <li>@Html.ActionLink("關於", "About", "Home")</li>
-                    <li>@Html.ActionLink("連絡方式", "Contact", "Home")</li>
+                    @* 使用Razor Helper method - IsCurrentPage *@
+                    <li class= "@(Html.IsCurrentPage("Home", "Index") ? "active": "")">@Html.ActionLink("首頁", "Index", "Home")</li>
+                    <li class="@(Html.IsCurrentPage("Home", "Account") ? "active": "")">@Html.ActionLink("記帳本", "Account", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
