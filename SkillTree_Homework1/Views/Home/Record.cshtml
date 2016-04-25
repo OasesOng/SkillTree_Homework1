@@ -1,8 +1,19 @@
 ﻿@model  IEnumerable<SkillTree_Homework1.Models.ViewModels.MoneyViewModel>
+@using System.Web.Mvc;
 @{
     Layout = null;
 }
-
+@*使用單頁面的helper fuction - 檢查支出或收入*@
+@helper checkcategory(int i){
+    if (i == 0)
+    {
+            @Html.Label("支出", new { @style = "color:red" })
+    }
+    else if (i == 1)
+    {
+            @Html.Label("收入", new { @style = "color:blue" })
+    }
+}
 <table class="table table-hover">
     <tr>
         <th>
@@ -24,17 +35,8 @@
         <td>
             @Html.DisplayFor(modelItem => item.date)
         </td>
-        <td>
-            @if (item.category == 0)
-            {
-                @Html.Label("支出", new { @style = "color:red" })
-            }
-            else if (item.category == 1)
-            {
-                @Html.Label("收入", new { @style="color:green"})
-            }
-
-        
+        <td >
+            @checkcategory(item.category)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.money)元
