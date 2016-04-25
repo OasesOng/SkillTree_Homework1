@@ -20,7 +20,6 @@ namespace SkillTree_Homework1.Controllers
 
         public ActionResult Account()
         {
-            ViewData["category"] = GetCategoryListItem();
             return View();
         }
 
@@ -31,7 +30,6 @@ namespace SkillTree_Homework1.Controllers
             {
                 return View(data);
             }
-
 
             var accountBook = new AccountBook
             {
